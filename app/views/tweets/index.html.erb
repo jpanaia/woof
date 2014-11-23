@@ -1,0 +1,23 @@
+<% @tweets.each do |tweet| %>
+  <div class="well">
+    <div class="media">
+      <a class="media-left" href="#">
+        <%= image_tag tweet.user.avatar.url(:thumb) %>
+      </a>
+      <div class="media-body">
+        <h2 class="media-heading"><%= tweet.message %></h2>
+
+        <p>by <%= link_to tweet.user.username, user_profile_path(user_id: tweet.user.id) %></p>
+
+          
+          <% if current_user.id == tweet.user_id %>
+            <div class="btn-group">
+               <%= link_to 'Edit Woof', edit_tweet_path(tweet), class: "btn btn-default" %></td>
+               <%= link_to 'Delete Woof', tweet, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+            </div>
+        <% end %>  
+      </div>
+    </div> 
+    <p class="wooftime"><%= tweet.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p> 
+  </div>
+<% end %>

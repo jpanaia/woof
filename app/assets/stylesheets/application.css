@@ -1,0 +1,158 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+ 	background: #eaddd0;
+ }
+
+.invisible {
+	visibility: hidden;
+	display:none;
+}
+
+.navbar {
+	height: 70px;
+	background: #c1cfde;
+	/* rbga(40,97,143,0.5)*/
+}
+
+.navbar-nav>li>a {
+	line-height: 39px;
+}
+.navbar-text {
+	padding-top:5px;
+	color: #2c3c4f;
+}
+
+hr {
+	border-top: 1px solid #eaddd0;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    line-height: 46px;
+    font-size: 43px;
+    margin: 0 0 23px 0;
+    color: #5c4f44;
+    }
+
+h2 {
+	color: #5c4f44;
+	font-family: 'Alice', serif;
+}
+
+h3 {
+	font-family: 'Alice', serif;
+	color:#5c4f44;
+}
+h5 {
+	color: #666;
+}
+
+blockquote, .well blockquote {
+	color: #695849;
+	border-left: 5px solid #eaddd0;
+}
+
+p {
+    font-family: 'Alice', serif;
+    font-size: 18px;
+    font-weight: normal;
+    line-height: 23px;
+    margin: 0 0 23px 0;
+    color: #695849;
+   }
+.btn-primary {
+  background-color: #286090;
+  border-color: #204d74;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #2c3c4f;
+  color: #fff;
+  border:1px solid #121e2d;
+ 
+}
+.navbar-collapse.collapse {
+	height: 100px;
+}
+
+.well {
+  background: rgba(255,255,255,0.5);
+  border: 0;
+}
+
+.wooftime {
+	border-top:1px solid #c2b6ac;
+	color: #c2b6ac;
+	margin-bottom:0;
+	padding-top:10px;
+	font-family:Courier;
+	font-size:1em;
+	text-align:right
+}
+
+/*.well .counts {
+	border-top:1px solid #eaddd0;
+	border-bottom: 1px solid #eaddd0;
+	padding:15px 0;
+}*/
+
+.crop-image {
+	height: 120px;
+	overflow: hidden;
+	display: block;
+}
+.counts .badge {
+  font-size: 1em;
+  background: #c2b6ac;
+  min-width: 40px;
+  padding: 5px 5px;
+  border-radius: 0px;
+  font-weight: normal;
+}
+
+.counts label {
+	width: 100px;
+	font-size: 1em;
+	color: #5c4f44;
+	font-weight:normal;
+	text-transform: uppercase;
+}
+
+.counts label:hover, .counts a:hover {
+	text-decoration: none;
+
+}
+
+.panel-default {
+	border: 0;
+}
+
+.media-body {
+	width: 100%;
+}
+
+.well .media-body label {
+ 	width: auto;
+ }
+
+.well .media-body .badge{
+ 	margin-right:3px;
+ }

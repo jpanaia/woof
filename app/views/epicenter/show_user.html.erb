@@ -1,0 +1,69 @@
+<% if @user.id != current_user.id %>
+  <div class="well">
+    <div class="media">
+      <a class="media-left" href="#">
+        <%= image_tag @user.avatar.url(:medium) %>
+      </a>
+      <div class="media-body">
+        <h1 class="media-heading"><%= @user.username %></h1>
+        <p>from <%= @user.location %><br/>
+        <blockquote><%= @user.bio %></blockquote> 
+
+        <div class="counts">
+          <label>Following:</label>
+          <span class="badge"> <%= @user.following.count %></span>
+          
+          <label>Followers:</label>
+          <span class="badge"><%= @user.tweets.count %></span>
+    
+          <label>Woofs:</label>
+          <span class="badge"><%= @user.tweets.count %></span>
+          <hr/>
+        </div>
+        <% if current_user.following.include?(@user.id) == false %>
+          <%= form_tag('/now_following') do %>
+            <span class="invisible">
+              <%= text_field_tag :follow_id, @user.id %>
+            </span>
+            <%= submit_tag "Follow #{@user.username}", class: "btn btn-info btn-lg pull-right" %>
+          <% end %>
+        <% else %>
+          <%= form_tag('/unfollow') do %>
+            <span class="invisible">
+              <%= text_field_tag :follow_id, @user.id %>
+            </span>
+          <%= submit_tag "Unfollow", class: "btn btn-info btn-lg" %>
+        <% end %>
+      <% end %>
+ 
+      </div>
+    </div>
+  </div>
+
+<% else %>
+<div class="row">
+      <div class="col-md-12">
+        <%= form_tag('/user_profile') do %>
+          <div class="field form-control">
+           <%= text_area_tag :message %>
+          </div>
+          <span class="invisible"><%= number_field_tag :user_id, current_user.id %></span>
+          <%= submit_tag "Woof It!", class: "btn btn-primary btn-lg"%>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+
+<!-- Only if current user show this: <h5>My Woofs</h5>-->
+<% @user.tweets.order(:updated_at).reverse.each do |tweet| %>
+  <div class="well">
+    <h2><%= tweet.message %></h2>
+    <% if current_user.id == tweet.user_id %>
+      <div class="">
+         <%= link_to 'Edit', edit_tweet_path(tweet) %> | <%= link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure?' } %><br/><br/>
+      </div>
+    <% end %>
+    <p class="wooftime"><%= tweet.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p>  
+    </div>
+  <% end %>
+

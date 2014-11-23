@@ -1,0 +1,19 @@
+<% if current_user.following.count > 0 %>
+	<% @tweets_for_feed.each do |f| %>
+		<div class="well">
+			<div class="media">
+			  <a class="media-left" href="#">
+			    <%= image_tag f.user.avatar.url(:thumb) %>
+			  </a>
+			  <div class="media-body">
+			    <h2 class="media-heading"><%=f.message %></h2>
+			    <p>by: <%= link_to f.user.username, user_profile_path(user_id: f.user_id) %></p>
+			  </div>
+			</div>
+	    <p class="wooftime"><%= f.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p> 
+		</div>
+	<% end %>
+<% else %>
+	<h1>Welcome to Woof!</h1>
+	<p>Woof is the first social networking site for canines. No felines allowed! Woof! Start by visiting some pup profiles to the right and following their woofs! And don't forget to Woof yourself. Remember woof early and woof often.</p>
+<% end %>
