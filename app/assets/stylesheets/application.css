@@ -114,11 +114,12 @@ p {
 	padding:15px 0;
 }*/
 
-.crop-image {
-	height: 120px;
+/*.crop-image {
+	height: 150px;
 	overflow: hidden;
 	display: block;
-}
+}*/
+
 .counts .badge {
   font-size: 1em;
   background: #c2b6ac;
@@ -155,4 +156,12 @@ p {
 
 .well .media-body .badge{
  	margin-right:3px;
+ }
+
+ .woof-input {
+ 	width: 100%;
+ }
+
+ .woof-area {
+ 	height:100px;
  }

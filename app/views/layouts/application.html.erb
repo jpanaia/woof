@@ -53,7 +53,7 @@
       </ul>
        <% if user_signed_in? %>
         <div class="navbar-right">
-            <span class="navbar-text">You are logged in as <strong><%= current_user.username %></strong> | <%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
+            <span class="navbar-text">Butt sniffs, <strong><%= current_user.username %></strong>! | <%= link_to "Sign out", destroy_user_session_path, method: :delete %></span>
           </div>
         <% end %>
     </div><!-- /.navbar-collapse -->
@@ -95,7 +95,7 @@
                   <% end %> 
                 </div>
                   <hr/>
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-lg btn-primary" %>             
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary", style: "width:100%" %>             
               </div>
             </div>
           </div> 
@@ -105,14 +105,12 @@
       <%= yield %>
     </div>
     <div class="col-md-2">
-      <%#= link_to 'New Tweet', new_tweet_path, class: "btn btn-primary" %>
-
-      <!--<h3><i class="fa fa-paw"></i> Follow Us!</h3>-->
       <% @users.each do |user| %>
         <% if user.id != current_user.id && current_user.following.include?(user.id) == false %>
-          <%= image_tag user.avatar.url(:thumb) %>
-          <p><%= link_to user.username, user_profile_path(user_id: user.id) %></p> 
-          <hr/>
+          <div class="well" align="center">
+            <%= image_tag user.avatar.url(:thumb) %><br/>
+            <%= link_to user.username, user_profile_path(user_id: user.id) %> 
+          </div>
         <% end %>
       <% end %>
       </div>
