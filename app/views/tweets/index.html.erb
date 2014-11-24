@@ -2,24 +2,18 @@
   <div class="well">
     <div class="media">
       <a class="media-left" href="#">
-        <%# if tweet.user != nil %>
+        <% if tweet.user != nil %>
           <%= image_tag tweet.user.avatar.url(:thumb) %>
-        <%# end %>
+        <%= end %>
         <%#= tweet.id %>
       </a>
       <div class="media-body">
         <h2 class="media-heading"><%= tweet.message %></h2>
 
         <p>by <%= link_to tweet.user.username, user_profile_path(user_id: tweet.user.id) %></p>
-          <%# if current_user.id == tweet.user_id %>
-            <!--<div>
-               <%#= link_to 'Edit Woof', edit_tweet_path(tweet) %> | 
-               <%#= link_to 'Delete Woof', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div> 
-        <%# end %>  -->
       </div>
     </div> 
-    <p class="wooftime"><%= tweet.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p> 
+    <p class="wooftime">Woof'd <%= time_ago_in_words(tweet.updated_at) %> ago</p>
   </div>
 <% end %>
 

@@ -10,10 +10,13 @@
 			    <p>by: <%= link_to f.user.username, user_profile_path(user_id: f.user_id) %></p>
 			  </div>
 			</div>
-	    <p class="wooftime"><%= f.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p> 
+	        <p class="wooftime">Woof'd <%= time_ago_in_words(f.updated_at) %> ago</p>
+ 
 		</div>
 	<% end %>
 <% else %>
 	<h1>Welcome to Woof!</h1>
 	<p>Woof is the first social networking site for canines. No felines allowed! Woof! Start by visiting some pup profiles to the right and following their woofs! And don't forget to Woof yourself. Remember woof early and woof often.</p>
 <% end %>
+
+<%= will_paginate @tweets %>

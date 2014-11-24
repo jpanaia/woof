@@ -1,20 +1,20 @@
 class EpicenterController < ApplicationController
-  def feed
-    @users = User.all
+  include ApplicationHelper
 
+  def feed
   	# Here we initialize the array that will 
   	# hold tweets from the current_user's 
   	# following list.
   	@tweets_for_feed = []
 
   	# We pull in all the tweets...
-  	@tweets = Tweet.all.order(:updated_at).reverse
-
+  	@tweetz = Tweet.all.order(:updated_at).reverse
+    @tweets = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
   	# Then we sort through the tweets
   	# to find the ones associated with
   	# users from the current_user's 
   	# following array.
-  	@tweets.each do |tweet|
+  	@tweetz.each do |tweet|
   		current_user.following.each do |f|
   			if tweet.user_id == f
   				@tweets_for_feed.push(tweet)
@@ -24,6 +24,7 @@ class EpicenterController < ApplicationController
   			end
   		end
   	end
+    show_followers
   end
 
   def show_user
@@ -34,6 +35,9 @@ class EpicenterController < ApplicationController
     tweet.message = params[:message]
     tweet.user_id = params[:user_id]
     tweet.save
+    show_followers 
+
+    @user_tweets = @user.tweets.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
   end
 
   def now_following
@@ -48,11 +52,13 @@ class EpicenterController < ApplicationController
   	# 'following' array attribute.
   	current_user.save
   	# Then we save it in our database.
+    show_followers
   end
 
   def unfollow
     @user = User.find(params[:follow_id])
-    current_user.following.pop(params[:follow_id].to_i)
+    current_user.following.delete(params[:follow_id].to_i)
     current_user.save
+    show_followers
   end
 end
