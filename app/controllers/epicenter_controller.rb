@@ -26,8 +26,10 @@ class EpicenterController < ApplicationController
     @tweets_for_feed = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
 
     show_followers
-
-    @user = User.find(current_user.following.last)
+     
+    if current_user.following == ""
+      @user = User.find(current_user.following.last)
+    end
 
   end
 

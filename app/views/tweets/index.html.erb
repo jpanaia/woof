@@ -1,7 +1,7 @@
 <% @tweets.each do |tweet| %>
   <div class="well">
     <div class="media">
-      <a class="media-left" href="#">
+      <a class="media-left crop-image2" href="#">
         <% if tweet.user != nil %>
           <%= image_tag tweet.user.avatar.url(:thumb) %>
         <% end %>

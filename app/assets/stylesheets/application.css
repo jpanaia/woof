@@ -121,6 +121,10 @@ p {
 	max-width: 233px;
 }
 
+.crop-image2 img {
+	max-width: 115px;
+}
+
 .counts .badge {
   font-size: 1em;
   background: #c2b6ac;
@@ -183,13 +187,13 @@ p {
     font-style: normal;
     background-color: #5c4f44;
     color: #fff;
-    padding: 10px 12px;
+    padding: 10px 15px;
     display: inline-block;    
     /*text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;*/ }
   .pagination a {
     text-decoration: none;
     color: #5c4f44;
-    padding: 10px 12px;
+    padding: 10px 15px;
     border:1px solid #c2b6ac; }
     .pagination a:hover, .pagination a:focus {
       text-decoration: none;
