@@ -23,7 +23,8 @@ class EpicenterController < ApplicationController
   			end
   		end
   	end
-    @tweets_for_feed = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
+
+    @tweets_for_feed = @tweets_for_feed.paginate(:page => params[:page], :per_page => 5)
 
     show_followers
      

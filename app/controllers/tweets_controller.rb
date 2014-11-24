@@ -24,6 +24,7 @@ class TweetsController < ApplicationController
 
   def edit
     @users = User.all
+    show_followers
   end
 
   def create

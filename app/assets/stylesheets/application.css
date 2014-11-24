@@ -125,6 +125,10 @@ p {
 	max-width: 115px;
 }
 
+.crop-image3 img {
+	max-width: 75px;
+}
+
 .counts .badge {
   font-size: 1em;
   background: #c2b6ac;
