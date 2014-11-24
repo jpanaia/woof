@@ -4,7 +4,7 @@
       <a class="media-left" href="#">
         <% if tweet.user != nil %>
           <%= image_tag tweet.user.avatar.url(:thumb) %>
-        <%= end %>
+        <% end %>
         <%#= tweet.id %>
       </a>
       <div class="media-body">

@@ -1,18 +1,21 @@
 <% if current_user.following.count > 0 %>
-	<% @tweets_for_feed.each do |f| %>
-		<div class="well">
-			<div class="media">
-			  <a class="media-left" href="#">
-			    <%= image_tag f.user.avatar.url(:thumb) %>
-			  </a>
-			  <div class="media-body">
-			    <h2 class="media-heading"><%=f.message %></h2>
-			    <p>by: <%= link_to f.user.username, user_profile_path(user_id: f.user_id) %></p>
-			  </div>
-			</div>
-	        <p class="wooftime">Woof'd <%= time_ago_in_words(f.updated_at) %> ago</p>
- 
+	 <% flash.each do |key, value| %>
+	    <div class="alert alert-<%= key %>"><%= value %></div>
+	  <% end %>
+	<% @tweets_for_feed.each do |f| %> 
+	<div class="well">
+		<div class="media">
+		  <a class="media-left" href="#">
+		    <%= image_tag f.user.avatar.url(:thumb) %>
+		  </a>
+		  <div class="media-body">
+		    <h2 class="media-heading"><%=f.message %></h2>
+		    <p>by: <%= link_to f.user.username, user_profile_path(user_id: f.user_id) %></p>
+		  </div>
 		</div>
+    <p class="wooftime">Woof'd <%= time_ago_in_words(f.updated_at) %> ago</p>
+
+	</div>
 	<% end %>
 <% else %>
 	<h1>Welcome to Woof!</h1>
