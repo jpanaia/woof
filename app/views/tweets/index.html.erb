@@ -22,3 +22,6 @@
     <p class="wooftime"><%= tweet.updated_at.strftime("Woof'd on %B, %d %Y at %I:%M%P") %></p> 
   </div>
 <% end %>
+
+<%= will_paginate @tweets %>
+

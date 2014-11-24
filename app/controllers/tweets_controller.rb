@@ -4,7 +4,8 @@ class TweetsController < ApplicationController
   respond_to :html
 
   def index
-    @tweets = Tweet.all.order(:updated_at).reverse
+    @tweets = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
+    #@tweets = @tweets.order(:updated_at).reverse
     @users = User.all
     respond_with(@tweets)
   end
