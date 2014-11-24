@@ -2,7 +2,7 @@
   <div class="well">
     <div class="media">
       <a class="media-left" href="#">
-        <%= image_tag @user.avatar.url(:medium) %>
+        <%= image_tag @user.avatar.url(:medium), style: "max-width:225px" %>
       </a>
       <div class="media-body">
         <h1 class="media-heading"><%= @user.username %></h1>

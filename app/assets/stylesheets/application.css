@@ -114,11 +114,12 @@ p {
 	padding:15px 0;
 }*/
 
-/*.crop-image {
-	height: 150px;
+.crop-image img {
+	/*height: 150px;
 	overflow: hidden;
-	display: block;
-}*/
+	display: block;*/
+	max-width: 233px;
+}
 
 .counts .badge {
   font-size: 1em;
@@ -165,3 +166,32 @@ p {
  .woof-area {
  	height:100px;
  }
+
+ /* Pagination */
+.pagination {
+  background: none;
+  border: none;
+  text-align: center;
+  padding: 1em;
+  display: block;
+  cursor: default; }
+  .pagination a, .pagination span {
+    /*padding: 0.2em 0.3em;*/ }
+  .pagination .disabled {
+    color: #c2b6ac; }
+  .pagination .current {
+    font-style: normal;
+    background-color: #5c4f44;
+    color: #fff;
+    padding: 10px 12px;
+    display: inline-block;    
+    /*text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px;*/ }
+  .pagination a {
+    text-decoration: none;
+    color: #5c4f44;
+    padding: 10px 12px;
+    border:1px solid #c2b6ac; }
+    .pagination a:hover, .pagination a:focus {
+      text-decoration: none;
+      background: #c2b6ac;
+      color: #5c4f44; }

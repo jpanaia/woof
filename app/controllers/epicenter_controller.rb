@@ -9,7 +9,6 @@ class EpicenterController < ApplicationController
 
   	# We pull in all the tweets...
   	@tweetz = Tweet.all.order(:updated_at).reverse
-    @tweets = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
   	# Then we sort through the tweets
   	# to find the ones associated with
   	# users from the current_user's 
@@ -24,6 +23,8 @@ class EpicenterController < ApplicationController
   			end
   		end
   	end
+    @tweets_for_feed = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
+
     show_followers
 
     @user = User.find(current_user.following.last)

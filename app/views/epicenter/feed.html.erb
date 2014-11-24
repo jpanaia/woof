@@ -1,6 +1,8 @@
 <% if current_user.following.count > 0 %>
 	 <% flash.each do |key, value| %>
+	   <% if key == "success" || value == "error" %>
 	    <div class="alert alert-<%= key %>"><%= value %></div>
+	    <% end %>
 	  <% end %>
 	<% @tweets_for_feed.each do |f| %> 
 	<div class="well">
@@ -22,4 +24,4 @@
 	<p>Woof is the first social networking site for canines. No felines allowed! Woof! Start by visiting some pup profiles to the right and following their woofs! And don't forget to Woof yourself. Remember woof early and woof often.</p>
 <% end %>
 
-<%= will_paginate @tweets %>
+<%= will_paginate @tweets_for_feed, class: "pagination" %>
