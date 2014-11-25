@@ -1,5 +1,5 @@
 <% if @user.id != current_user.id %>
-  <div class="well">
+  <div class="well top-profile">
     <div class="media">
       <a class="media-left" href="#">
         <%= image_tag @user.avatar.url(:medium), style: "max-width:225px" %>
@@ -14,8 +14,10 @@
           <span class="badge"> <%= @user.following.count %></span>
           
           <label>Followers:</label>
-          <span class="badge"><%= @followers.count %></span>
-    
+          <span class="badge">
+            <%= link_to @user.followers.count, user_profile_path(user_id: @user.id, show: "followers") %> 
+          </span>
+          
           <label>Woofs:</label>
           <span class="badge"><%= @user.tweets.count %></span>
           <hr/>
@@ -40,6 +42,28 @@
     </div>
   </div>
 
+  <% if params[:show] == "followers" %>
+     <% if !@user.followers.empty? %>
+       <h3><%= @user.followers.count %> pups following <%= @user.username %>:</h3>
+    <% else %>
+      <h3>Be the first to follow me!</h3>
+     <% end %>
+
+    <% @users.each do |u| %>
+      <% @user.followers.each do |f| %>
+        <% if u.id == f %>
+          <div class="col-md-4">
+            <div class="well crop-image3" align="center">
+              <%= image_tag u.avatar.url(:thumb) %><br/>
+              <%= link_to u.username, user_profile_path(user_id: u.id) %> 
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <br clear="all"/>
+  <% end %>
+
 <% else %>
 
   <div class="well woof-area">
@@ -56,6 +80,7 @@
   </div>
 
 <% end %>
+
 
   <!-- Only if current user show this: <h5>My Woofs</h5>-->
   <%# @user.tweets.order(:updated_at).reverse.each do |tweet| %>

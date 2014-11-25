@@ -1,5 +1,4 @@
 class TweetsController < ApplicationController
-  include ApplicationHelper
 
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
@@ -9,7 +8,7 @@ class TweetsController < ApplicationController
     @tweets = Tweet.paginate(:page => params[:page], :per_page => 5).order('updated_at DESC')
     #@tweets = @tweets.order(:updated_at).reverse
     @users = User.all
-    show_followers
+    #show_followers
     respond_with(@tweets)
   end
 
@@ -24,7 +23,6 @@ class TweetsController < ApplicationController
 
   def edit
     @users = User.all
-    show_followers
   end
 
   def create

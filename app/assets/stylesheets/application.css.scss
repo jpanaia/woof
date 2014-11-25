@@ -1,0 +1,223 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ */
+
+//colors
+$color_pearl_bush_approx: #eaddd0;
+$color_periwinkle_gray_approx: #c1cfde;
+$color_pickled_bluewood_approx: #2c3c4f;
+$color_kabul_approx: #5c4f44;
+$color_storm_dust_approx: #666;
+$color_tobacco_brown_approx: #695849;
+$color_st_tropaz_approx: #286090;
+$color_chathams_blue_approx: #204d74;
+$white: #fff;
+$color_mirage_approx: #121e2d;
+$white_50: rgba(255,255,255,0.5);
+$color_tide_approx: #c2b6ac;
+
+//fonts
+$font_0: Playfair Display;
+$font_1: serif;
+$font_2: Alice;
+$font_3: Courier;
+
+//@extend-elements
+//original selectors
+//.pagination a:hover, .pagination a:focus
+%extend_1 {
+	text-decoration: none;
+	background: $color_tide_approx;
+	color: $color_kabul_approx;
+}
+
+
+body {
+	background: $color_pearl_bush_approx;
+}
+.invisible {
+	display: none;
+}
+.navbar {
+	height: 70px;
+	background: $color_periwinkle_gray_approx;
+}
+.navbar-nav>li>a {
+	line-height: 39px;
+}
+.navbar-text {
+	padding-top: 5px;
+	color: $color_pickled_bluewood_approx;
+}
+hr {
+	border-top: 1px solid $color_pearl_bush_approx;
+}
+h1 {
+	font-family: $font_0, $font_1;
+	font-weight: 900;
+	line-height: 46px;
+	font-size: 43px;
+	margin: 0 0 23px 0;
+	color: $color_kabul_approx;
+}
+h2 {
+	color: $color_kabul_approx;
+	font-family: $font_2, $font_1;
+}
+h3 {
+	font-family: $font_2, $font_1;
+	color: $color_kabul_approx;
+}
+h5 {
+	color: $color_storm_dust_approx;
+}
+blockquote {
+	color: $color_tobacco_brown_approx;
+	border-left: 5px solid $color_pearl_bush_approx;
+}
+.well {
+	background: $white_50;
+	border: 0;
+	blockquote {
+		color: $color_tobacco_brown_approx;
+		border-left: 5px solid $color_pearl_bush_approx;
+	}
+	.media-body {
+		label {
+			width: auto;
+		}
+		.badge {
+			margin-right: 3px;
+		}
+	}
+}
+
+.top-profile {
+  .badge {
+	  a {
+	  	color: #fff
+	  }
+	  a:hover {
+	  	font-weight: bold
+	  }
+	}
+}
+p {
+	font-family: $font_2, $font_1;
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 23px;
+	margin: 0 0 23px 0;
+	color: $color_tobacco_brown_approx;
+}
+.btn-primary {
+	background-color: $color_st_tropaz_approx;
+	border-color: $color_chathams_blue_approx;
+	color: $white;
+	&:hover {
+		background-color: $color_pickled_bluewood_approx;
+		color: $white;
+		border: 1px solid $color_mirage_approx;
+	}
+}
+.wooftime {
+	border-top: 1px solid $color_tide_approx;
+	color: $color_tide_approx;
+	margin-bottom: 0;
+	padding-top: 10px;
+	font-family: $font_3;
+	font-size: 1em;
+	text-align: right;
+}
+.counts {
+	.badge {
+		font-size: 1em;
+		background: $color_tide_approx;
+		min-width: 40px;
+		padding: 5px;
+		border-radius: 0;
+		font-weight: normal;
+	}
+	label {
+		width: 100px;
+		font-size: 1em;
+		color: $color_kabul_approx;
+		font-weight: normal;
+		text-transform: uppercase;
+		&:hover {
+			text-decoration: none;
+		}
+	}
+	a:hover {
+		text-decoration: none;
+	}
+}
+.panel-default {
+	border: 0;
+}
+.media-body {
+	width: 100%;
+}
+.woof-input {
+	width: 100%;
+}
+.woof-area {
+	height: 100px;
+}
+.pagination {
+	background: none;
+	border: none;
+	text-align: center;
+	padding: 1em;
+	display: block;
+	cursor: default;
+	a {
+		text-decoration: none;
+		color: $color_kabul_approx;
+		padding: 10px 15px;
+		border: 1px solid $color_tide_approx;
+		&:hover {
+			@extend %extend_1;
+		}
+		&:focus {
+			@extend %extend_1;
+		}
+	}
+	span {
+	}
+	.disabled {
+		color: $color_tide_approx;
+	}
+	.current {
+		font-style: normal;
+		background-color: $color_kabul_approx;
+		color: $white;
+		padding: 10px 15px;
+		display: inline-block;
+	}
+}
+.navbar-collapse.collapse {
+	height: 100px;
+}
+.crop-image img {
+	max-width: 233px;
+}
+.crop-image2 img {
+	max-width: 115px;
+}
+.crop-image3 img {
+	max-width: 75px;
+}

@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+	<% if user.id != current_user.id && current_user.following.include?(user.id) == false %>
+	  <div class="well crop-image3" align="center">
+	    <%= image_tag user.avatar.url(:thumb) %><br/>
+	    <%= link_to user.username, user_profile_path(user_id: user.id) %> 
+	  </div>
+	<% end %>
+<% end %>

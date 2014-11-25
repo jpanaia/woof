@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+	<div class="panel-body">      
+  	<div class="media">
+			<a class="media crop-image" href="#">
+			<%= image_tag current_user.avatar.url(:medium) %><br/>
+			</a>
+			<div class="media-body">
+			 <hr/>
+			<h3 class="media-heading"><%= current_user.username %></h3>
+			<p><%= current_user.name %> from <%= current_user.location %></p>
+			<blockquote><%= current_user.bio %></blockquote>
+			<div class="counts">
+			  <label>Following:</label> 
+			  <%= link_to root_path do %>
+			     <span class="badge"> <%= current_user.following.count %></span>
+			  <% end %> 
+			  <label>Followers:</label>
+			    <span class="badge">
+			    	<%= current_user.followers.count %>
+			    	<%#= link_to current_user.followers.count, user_profile_path(user_id: current_user.id, show: "followers") %>
+			    </span>
+			  <br/>
+			  <label>Woofs:</label>
+			  <%= link_to user_profile_path(user_id: current_user.id) do %>
+			    <span class="badge"> <%= current_user.tweets.count %></span>
+			  <% end %> 
+			</div>
+			  <hr/>
+			<%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary", style: "width:100%" %>             
+			</div>
+		</div>
+	</div> 
+</div> 

@@ -1,0 +1,15 @@
+<li><%= link_to root_path do %>
+      <span class="fa fa-comment"></span> Feed
+     <% end %></li>
+<li><%= link_to user_profile_path(user_id: current_user.id) do %>
+      <span class="fa fa-paw"></span> My Woofs
+     <% end %>
+</li>
+<li><%= link_to tweets_path do %>
+    <span class="fa fa-comments-o"></span> All Woofs
+    <% end %>
+</li>
+<!--<li><%#= link_to "Edit My Profile", edit_user_registration_path %></li>-->
+
+<%# else %>
+<!--<li><%#= link_to "Sign in", new_user_session_path %></li>-->
