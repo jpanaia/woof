@@ -11,7 +11,9 @@
 
         <div class="counts">
           <label>Following:</label>
-          <span class="badge"> <%= @user.following.count %></span>
+          <span class="badge"> 
+            <%= link_to @user.following.count, user_profile_path(user_id: @user.id, show: "following") %>
+            </span>
           
           <label>Followers:</label>
           <span class="badge">
@@ -44,9 +46,9 @@
 
   <% if params[:show] == "followers" %>
      <% if !@user.followers.empty? %>
-       <h3><%= @user.followers.count %> pups following <%= @user.username %>:</h3>
-    <% else %>
-      <h3>Be the first to follow me!</h3>
+       <h3><%= @user.followers.count %> pups follow <%= @user.username %>:</h3>
+     <% else %>
+       <h3>Be the first to follow me!</h3>
      <% end %>
 
     <% @users.each do |u| %>
@@ -62,6 +64,28 @@
       <% end %>
     <% end %>
     <br clear="all"/>
+
+  <% elsif params[:show] == "following" %>
+    <% if !@user.following.empty? %>
+       <h3><%= @user.username %> follows <%= @user.following.count %> pups:</h3>
+     <% else %>
+       <h3>I'm not following anyone!</h3>
+     <% end %>
+
+    <% @users.each do |u| %>
+      <% @user.following.each do |f| %>
+        <% if u.id == f %>
+          <div class="col-md-4">
+            <div class="well crop-image3" align="center">
+              <%= image_tag u.avatar.url(:thumb) %><br/>
+              <%= link_to u.username, user_profile_path(user_id: u.id) %> 
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <br clear="all"/>
+
   <% end %>
 
 <% else %>
